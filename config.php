@@ -2,7 +2,7 @@
 // config.php - Domain configuration
 
  $site_config = [
-    'site_name' => 'XP-Systems Domains',
+    'site_name' => 'xpsystems Domains',
     'version' => 'v2.2.0',
     'current_year' => date('Y'),
 ];

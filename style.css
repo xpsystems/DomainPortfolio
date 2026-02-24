@@ -195,7 +195,7 @@ ul {
 .hero {
   position: relative;
   background-color: var(--bg);
-  padding: calc(var(--nav-height) + 80px) 0 40px;
+  padding: calc(var(--nav-height) + 60px) 0 100px; /* Extra padding bottom for divider overlap */
   overflow: hidden;
   transition: background-color 0.3s ease;
 }
@@ -239,21 +239,22 @@ ul {
   line-height: 0;
   position: relative;
   z-index: 2;
-  background-color: transparent; /* Ensure transparency for shapes */
+  margin-top: -80px; /* Pull divider up into previous section */
+  height: 80px;
+  pointer-events: none; /* Allow clicks to pass through transparent parts */
 }
 
 .section-divider svg {
   display: block;
   width: 100%;
-  height: 80px; /* Taller divider for more impact */
+  height: 100%;
+  overflow: visible;
 }
 
-.divider-below { margin-top: -1px; }
-
-/* SVG fills */
-.divider-fill-bg  { fill: var(--bg); }
-.divider-fill-alt { fill: var(--bg-alt); }
-.divider-fill-footer { fill: var(--footer-bg); }
+/* SVG fills - these will now transition smoothly */
+.divider-fill-bg      { fill: var(--bg); transition: fill 0.3s ease; }
+.divider-fill-alt     { fill: var(--bg-alt); transition: fill 0.3s ease; }
+.divider-fill-footer  { fill: var(--footer-bg); transition: fill 0.3s ease; }
 
 /* ── Theme-switch broadcast ─────────────────────────────────────── */
 html.is-switching-theme *,
@@ -272,8 +273,9 @@ html.is-switching-theme *::after {
 
 .services-section {
   background-color: var(--bg-alt);
-  padding: 80px 0 60px;
+  padding: 100px 0 60px; /* Top padding accounts for divider overlap space */
   position: relative;
+  z-index: 1;
   transition: background-color 0.3s ease;
 }
 
@@ -397,8 +399,10 @@ html.is-switching-theme *::after {
 /* ── Legacy Section ───────────────────────────────────────────── */
 
 .legacy-section {
-  background-color: var(--bg-alt); /* Matches the divider transition */
-  padding: 60px 0 80px;
+  background-color: var(--bg); /* Switched to bg for contrast */
+  padding: 100px 0 80px; /* Top padding for divider */
+  position: relative;
+  z-index: 1;
   transition: background-color 0.3s ease;
 }
 
@@ -468,8 +472,10 @@ html.is-switching-theme *::after {
 
 .site-footer {
   background-color: var(--footer-bg);
-  border-top: 1px solid var(--border);
-  padding: 40px 0;
+  /* Removed border-top as requested */
+  padding: 100px 0 40px; /* Top padding for divider */
+  position: relative;
+  z-index: 1;
   transition: background-color 0.3s ease;
 }
 

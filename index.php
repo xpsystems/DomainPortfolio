@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete domain portfolio for XP-Systems and affiliated projects.">
+    <meta name="description" content="Complete domain portfolio for xpsystems and affiliated projects.">
     <title><?= htmlspecialchars($site_config['site_name']) ?> | Domain Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,13 +16,12 @@
     <!-- Navigation -->
     <nav class="nav-header">
         <div class="nav-inner">
-            <a href="https://xpsystems.eu" class="nav-logo">XP-Systems</a>
+            <a href="https://xpsystems.eu" class="nav-logo">xpsystems</a>
             <div class="nav-links">
                 <a href="https://xpsystems.eu" class="nav-link">Main Site</a>
                 <a href="https://status.xpsystems.eu" class="nav-link">Status</a>
             </div>
             <div class="nav-right">
-                 <!-- Theme toggle for mobile/desktop alignment -->
                 <div class="theme-toggle" role="group" aria-label="Color theme">
                     <button class="theme-btn" data-theme="system" title="System theme" type="button">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -49,15 +48,16 @@
             <div class="hero-eyebrow reveal">Domain Portfolio</div>
             <h1 class="hero-title reveal" style="--delay: 50ms">Our Digital Footprint</h1>
             <p class="hero-description reveal" style="--delay: 100ms">
-                A comprehensive registry of all domains owned and managed by XP-Systems, including active projects, infrastructure, and historical archives.
+                A comprehensive registry of all domains owned and managed by xpsystems, including active projects, infrastructure, and historical archives.
             </p>
         </div>
     </header>
 
-    <!-- Divider: Hero -> Active Domains -->
-    <div class="section-divider divider-below">
+    <!-- Divider: Hero (bg) -> Services (bg-alt) -->
+    <!-- SVG Fill matches the NEXT section color (bg-alt) -->
+    <div class="section-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 L600,100 L1200,0 L1200,120 L0,120 Z" class="divider-fill-alt"></path>
+            <path d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z" class="divider-fill-alt"></path>
         </svg>
     </div>
 
@@ -94,12 +94,13 @@
         </div>
     </main>
 
-    <!-- Divider: Active -> Legacy Section -->
+    <!-- Divider: Services (bg-alt) -> Legacy (bg) -->
+    <!-- SVG Fill matches the NEXT section color (bg) -->
     <div class="section-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 L1200,80 L1200,0 Z" class="divider-fill-bg"></path>
-            <path d="M0,0 L1200,80 L1200,120 L0,120 Z" class="divider-fill-alt" style="opacity: 0.5"></path>
-             <!-- We use a secondary bg-alt fill to transition into the legacy section -->
+            <!-- Inverted wave: pointing down from top -->
+             <path d="M0,0 C300,0 900,120 1200,0 L1200,120 L0,120 Z" class="divider-fill-bg" style="opacity:0.4"></path>
+             <path d="M0,40 C300,120 900,0 1200,80 L1200,120 L0,120 Z" class="divider-fill-bg"></path>
         </svg>
     </div>
 
@@ -124,10 +125,11 @@
         </div>
     </section>
 
-    <!-- Divider: Legacy -> Footer -->
-    <div class="section-divider divider-below">
+    <!-- Divider: Legacy (bg) -> Footer (footer-bg) -->
+    <!-- SVG Fill matches the NEXT section color (footer-bg) -->
+    <div class="section-divider">
          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 L600,80 L1200,0 L1200,120 L0,120 Z" class="divider-fill-footer"></path>
+            <path d="M0,0 C200,80 1000,0 1200,80 L1200,120 L0,120 Z" class="divider-fill-footer"></path>
         </svg>
     </div>
 
@@ -136,7 +138,7 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <span class="footer-logo">XP-Systems</span>
+                    <span class="footer-logo">xpsystems</span>
                     <span class="footer-copy">&copy; <?= htmlspecialchars($site_config['current_year']) ?> All rights reserved.</span>
                     <span class="footer-version"><?= htmlspecialchars($site_config['version']) ?></span>
                 </div>
