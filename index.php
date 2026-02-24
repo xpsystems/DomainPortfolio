@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete domain portfolio for xpsystems and affiliated projects.">
     <title><?= htmlspecialchars($site_config['site_name']) ?> | Domain Portfolio</title>
+    <!-- Fonts & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,17 +22,7 @@
                 <a href="https://status.xpsystems.eu" class="nav-link">Status</a>
             </div>
             <div class="nav-right">
-                <div class="theme-toggle" role="group" aria-label="Color theme">
-                    <button class="theme-btn" data-theme="system" title="System theme" type="button">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    </button>
-                    <button class="theme-btn" data-theme="dark" title="Dark theme" type="button">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    </button>
-                    <button class="theme-btn" data-theme="light" title="Light theme" type="button">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    </button>
-                </div>
+                <?php include 'components/theme-toggle.php'; ?>
                 <button class="nav-hamburger" aria-label="Toggle menu">
                     <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -48,28 +38,27 @@
             <div class="hero-eyebrow reveal">Domain Portfolio</div>
             <h1 class="hero-title reveal" style="--delay: 50ms">Our Digital Footprint</h1>
             <p class="hero-description reveal" style="--delay: 100ms">
-                A comprehensive registry of all domains owned and managed by xpsystems, including active projects, infrastructure, and historical archives.
+                A comprehensive registry of all domains owned and managed by xpsystems.
             </p>
         </div>
     </header>
 
-    <!-- Divider: Hero (bg) -> Services (bg-alt) -->
-    <!-- SVG Fill matches the NEXT section color (bg-alt) -->
+    <!-- Divider: Hero -> Services (Multi-layer Wave) -->
     <div class="section-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z" class="divider-fill-alt"></path>
+            <!-- Background Layer (matches previous section slightly transparent or offset) -->
+            <path d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z" class="divider-fill-bg" style="opacity: 0.3"></path>
+            <!-- Foreground Layer (matches next section) -->
+            <path d="M0,40 C200,120 1000,0 1200,80 L1200,120 L0,120 Z" class="divider-fill-alt"></path>
         </svg>
     </div>
 
     <!-- Active Domains Grid -->
     <main class="services-section">
         <div class="container">
-            <div class="services-grid">
-                <?php 
-                $active_count = 0;
-                foreach ($active_domains as $index => $category): 
-                    $active_count += count($category['links']);
-                ?>
+            <!-- Grid content... (Same as before) -->
+             <div class="services-grid">
+                <?php foreach ($active_domains as $index => $category): ?>
                 <div class="card <?= isset($category['highlight']) ? 'card-partner' : '' ?> reveal" style="--delay: <?= 100 + ($index * 50) ?>ms">
                     <div class="card-top">
                         <div class="card-badge <?= isset($category['highlight']) ? 'card-badge-service' : '' ?>"><?= htmlspecialchars($category['category']) ?></div>
@@ -94,24 +83,24 @@
         </div>
     </main>
 
-    <!-- Divider: Services (bg-alt) -> Legacy (bg) -->
-    <!-- SVG Fill matches the NEXT section color (bg) -->
+    <!-- Divider: Services -> Legacy (Multi-layer Curve) -->
     <div class="section-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <!-- Inverted wave: pointing down from top -->
-             <path d="M0,0 C300,0 900,120 1200,0 L1200,120 L0,120 Z" class="divider-fill-bg" style="opacity:0.4"></path>
-             <path d="M0,40 C300,120 900,0 1200,80 L1200,120 L0,120 Z" class="divider-fill-bg"></path>
+            <!-- Background Layer -->
+            <path d="M0,0 C400,120 800,0 1200,60 L1200,120 L0,120 Z" class="divider-fill-alt" style="opacity: 0.2"></path>
+            <!-- Foreground Layer -->
+            <path d="M0,60 C300,0 900,120 1200,40 L1200,120 L0,120 Z" class="divider-fill-bg"></path>
         </svg>
     </div>
 
-    <!-- Legacy Domains Full Width Section -->
+    <!-- Legacy Section -->
     <section class="legacy-section">
         <div class="container">
-            <div class="section-header reveal">
+             <!-- Legacy content... (Same as before) -->
+             <div class="section-header reveal">
                 <h2 class="section-title">Legacy & Expired</h2>
                 <p class="section-subtitle">Historical domains previously part of the network.</p>
             </div>
-
             <div class="legacy-grid reveal" style="--delay: 100ms">
                 <?php foreach ($legacy_domains['links'] as $link): ?>
                 <div class="legacy-item">
@@ -125,11 +114,13 @@
         </div>
     </section>
 
-    <!-- Divider: Legacy (bg) -> Footer (footer-bg) -->
-    <!-- SVG Fill matches the NEXT section color (footer-bg) -->
+    <!-- Divider: Legacy -> Footer (Multi-layer Tilt) -->
     <div class="section-divider">
          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C200,80 1000,0 1200,80 L1200,120 L0,120 Z" class="divider-fill-footer"></path>
+            <!-- Background Layer -->
+            <path d="M0,0 L1200,80 L1200,120 L0,120 Z" class="divider-fill-bg" style="opacity: 0.3"></path>
+            <!-- Foreground Layer -->
+            <path d="M0,80 L1200,0 L1200,120 L0,120 Z" class="divider-fill-footer"></path>
         </svg>
     </div>
 
@@ -143,17 +134,7 @@
                     <span class="footer-version"><?= htmlspecialchars($site_config['version']) ?></span>
                 </div>
                 <div class="footer-right">
-                    <div class="theme-toggle" role="group" aria-label="Color theme">
-                        <button class="theme-btn" data-theme="system" title="System theme" type="button">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        </button>
-                        <button class="theme-btn" data-theme="dark" title="Dark theme" type="button">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                        </button>
-                        <button class="theme-btn" data-theme="light" title="Light theme" type="button">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                        </button>
-                    </div>
+                    <?php include 'components/theme-toggle.php'; ?>
                 </div>
             </div>
         </div>
