@@ -1,4 +1,4 @@
-// script.js - Theme switching and interactions
+// script.js
 
 (function() {
     'use strict';
@@ -82,49 +82,35 @@
         }
     }
 
-    // ── Animated Counters ───────────────────────────────────────────
+    // ── Mobile Navigation ───────────────────────────────────────────
     
-    function animateCounter(element, target, duration) {
-        if (!element) return;
-        
-        const start = 0;
-        const startTime = performance.now();
-        
-        function update(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Ease out cubic
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            const current = Math.floor(start + (target - start) * easeOut);
-            
-            element.textContent = current;
-            
-            if (progress < 1) {
-                requestAnimationFrame(update);
+    function initNav() {
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navLinks = document.querySelector('.nav-links'); // Target desktop nav-links class which becomes mobile menu
+        const overlay = document.querySelector('.nav-overlay');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('open');
+                navLinks.classList.toggle('open');
+                if(overlay) overlay.classList.toggle('active');
+            });
+
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    hamburger.classList.remove('open');
+                    navLinks.classList.remove('open');
+                    overlay.classList.remove('active');
+                });
             }
         }
-        
-        requestAnimationFrame(update);
-    }
-
-    function initCounters() {
-        const stats = window.DOMAIN_STATS || { active: 0, legacy: 0 };
-        const activeEl = document.getElementById('active-count');
-        const legacyEl = document.getElementById('legacy-count');
-        
-        // Delay animation until reveal is visible
-        setTimeout(function() {
-            animateCounter(activeEl, stats.active, 1200);
-            animateCounter(legacyEl, stats.legacy, 800);
-        }, 400);
     }
 
     // ── Initialize ──────────────────────────────────────────────────
     
     document.addEventListener('DOMContentLoaded', function() {
         initReveal();
-        initCounters();
+        initNav();
     });
 
 })();
